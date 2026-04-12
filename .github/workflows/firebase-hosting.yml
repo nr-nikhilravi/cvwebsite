@@ -1,0 +1,25 @@
+name: Deploy CV site to Firebase Hosting
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # If you ever have a build step (npm, etc.), add it here.
+      # For plain HTML/CSS/JS you don't need build steps.
+
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_NIKHILRAVICV_7C0AC }}'
+          channelId: live
+          projectId: 'nikhilravicv-7c0ac'
